@@ -19,6 +19,11 @@ function userQuestions() {
         },
         {
             type: "input",
+            message: "What is your github username?",
+            name: "username"
+        },
+        {
+            type: "input",
             message: "What is the name of this repository?",
             name: "title"
         },
@@ -83,9 +88,10 @@ init();
 
 function generateMD(answer) {
     return `#
-Name: ${answer.name}
-Email: ${answer.email}
-Title: ${answer.title}
+* Name: ${answer.name}
+* Email: ${answer.email}
+* Github: ${answer.username}
+* Repo title: ${answer.title}
   * Description: ${answer.description}
   * Table of Contents: ${answer.contents}
   * Installation: ${answer.install}
@@ -104,7 +110,6 @@ Title: ${answer.title}
 //             const avatar = res.data.filter(function(avatar_url) {
 //                 return avatar_url;
 //             });
-            
             
 //             const avatarStr = avatar.join("\n");
             

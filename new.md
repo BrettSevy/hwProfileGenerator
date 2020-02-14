@@ -1,12 +1,13 @@
 #
-Name: Brett Sevy
-Email: undefined
-Title: markdown
-  * Description: create a markdown page using node
-  * Table of Contents: n/a
-  * Installation: n/a
-  * Usage: you input the data in node then it generates a readme file
-  * License: n/a
-  * Contributing: n/a
+* Name: Brett
+* Email: justbrettt@gmail.com
+* Github: BrettSevy
+* Repo title: Markdown
+  * Description: you input data into node and it creates a read me file with that info
+  * Table of Contents: N/A
+  * Installation: N/A
+  * Usage: You answer the questions from the prompts in node and a read me is gerated
+  * License: N/A
+  * Contributing: no
   * Tests: undefined
-  * Questions: n/a
+  * Questions: no
