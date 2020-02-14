@@ -1,11 +1,11 @@
 const fs = require("fs");
 const util = require("util");
 const inquirer = require("inquirer");
+const axios = require("axios");
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
-
-function userQuestions() {
+async function userQuestions() {
     return inquirer.prompt([
         {
             type: "input",
@@ -73,14 +73,13 @@ function userQuestions() {
 
 async function init() {
     try {
-
-        var userInput = await userQuestions();
-        var userMD = await generateMD(userInput);
+        
+        let userInput = await userQuestions();
+        let userMD = await generateMD(userInput);
 
         writeFileAsync("new.md", userMD);
     } catch (err) {
         console.log(err);
-
     }
 }
 
@@ -90,7 +89,7 @@ function generateMD(answer) {
     return `#
 * Name: ${answer.name}
 * Email: ${answer.email}
-* Github: ${answer.username}
+* Github: https://github.com/${answer.username}
 * Repo title: ${answer.title}
   * Description: ${answer.description}
   * Table of Contents: ${answer.contents}
@@ -101,26 +100,4 @@ function generateMD(answer) {
   * Tests: ${answer.tests}
   * Questions: ${answer.questions}
 `
-}
-    
-//     .then(function({ username }) {
-//         const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
-        
-//         axios.get(queryUrl).then(function(res) {
-//             const avatar = res.data.filter(function(avatar_url) {
-//                 return avatar_url;
-//             });
-            
-//             const avatarStr = avatar.join("\n");
-            
-//       fs.writeFile("repos.txt", avatarStr, function(err) {
-//           if (err) {
-//           throw err;
-//         }
-        
-//         console.log(`Saved ${avatar.length} repos`);
-//     });
-// });
-
-// });
-                        
+}   
