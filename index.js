@@ -2,6 +2,10 @@ const fs = require("fs");
 const util = require("util");
 const inquirer = require("inquirer");
 const axios = require("axios");
+// require("dotenv").config();
+const generateMD = require("./generateMarkdown");
+const api = require("./api");
+
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
@@ -85,19 +89,19 @@ async function init() {
 
 init();
 
-function generateMD(answer) {
-    return `#
-* Name: ${answer.name}
-* Email: ${answer.email}
-* Github: https://github.com/${answer.username}
-* Repo title: ${answer.title}
-  * Description: ${answer.description}
-  * Table of Contents: ${answer.contents}
-  * Installation: ${answer.install}
-  * Usage: ${answer.usage}
-  * License: ${answer.licence}
-  * Contributing: ${answer.contributors}
-  * Tests: ${answer.tests}
-  * Questions: ${answer.questions}
-`
-}   
+// function generateMD(answer) {
+//     return `#
+// * Name: ${answer.name}
+// * Email: ${answer.email}
+// * Github: https://github.com/${answer.username}
+// * Repo title: ${answer.title}
+//   * Description: ${answer.description}
+//   * Table of Contents: ${answer.contents}
+//   * Installation: ${answer.install}
+//   * Usage: ${answer.usage}
+//   * License: ${answer.licence}
+//   * Contributing: ${answer.contributors}
+//   * Tests: ${answer.tests}
+//   * Questions: ${answer.questions}
+// `
+// }   
