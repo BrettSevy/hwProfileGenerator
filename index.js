@@ -1,26 +1,13 @@
 const fs = require("fs");
 const util = require("util");
 const inquirer = require("inquirer");
-const axios = require("axios");
-// require("dotenv").config();
-const generateMD = require("./generateMarkdown");
-const api = require("./api");
-
+const generateMD = require("./utils/generateMarkdown");
+const api = require("./utils/api.js");
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
-async function userQuestions() {
-    return inquirer.prompt([
-        {
-            type: "input",
-            message: "What is your name?",
-            name: "name"
-        },
-        {
-            type: "input",
-            message: "What is your email?",
-            name: "email"
-        },
+function questions() {
+	return inquirer.prompt([
         {
             type: "input",
             message: "What is your github username?",
@@ -74,34 +61,27 @@ async function userQuestions() {
 
     ])
 };
-
-async function init() {
-    try {
-        
-        let userInput = await userQuestions();
-        let userMD = await generateMD(userInput);
-
-        writeFileAsync("new.md", userMD);
-    } catch (err) {
-        console.log(err);
-    }
-}
-
 init();
 
-// function generateMD(answer) {
-//     return `#
-// * Name: ${answer.name}
-// * Email: ${answer.email}
-// * Github: https://github.com/${answer.username}
-// * Repo title: ${answer.title}
-//   * Description: ${answer.description}
-//   * Table of Contents: ${answer.contents}
-//   * Installation: ${answer.install}
-//   * Usage: ${answer.usage}
-//   * License: ${answer.licence}
-//   * Contributing: ${answer.contributors}
-//   * Tests: ${answer.tests}
-//   * Questions: ${answer.questions}
-// `
-// }   
+async function init() {
+	try {
+		var userAnswers = await questions();
+		// console.log(userAnswers);
+		var response = await api.getUser(userAnswers.username);
+		var info = await api.data(userAnswers.username);
+		var gitInfo = { info, ...userAnswers, ...response.data };
+		
+
+		var userMD = await generateMD(gitInfo);
+
+		await writeFileAsync("new.md", userMD, "utf8");
+	} catch (err) {
+		console.log(err);
+	}
+}
+    
+
+
+
+   
+  
