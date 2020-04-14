@@ -21,7 +21,8 @@ The generated README includes:
 
 # Demo
 
-Deployment : ```bash
+Deployment : 
+```bash
 node index.js
 ```
 
