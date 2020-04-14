@@ -1,4 +1,4 @@
-# Profile Genertor
+# Profile Generator
 <h4 align="center">Node, Axios, Inquirer</h4>
 
 ![Read Me Profile](utils/assets/screenshot.png)
