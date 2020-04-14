@@ -34,5 +34,5 @@ Deployment : Node index.js
 
 # Author
 
-Brett Sevy 
+[Brett Sevy](https://github.com/BrettSevy)
 
