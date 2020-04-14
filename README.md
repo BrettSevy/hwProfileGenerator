@@ -21,7 +21,9 @@ The generated README includes:
 
 # Demo
 
-Deployment : Node index.js
+Deployment : ```bash
+node index.js
+```
 
 # Technologies used
 
